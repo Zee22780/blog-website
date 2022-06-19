@@ -9,7 +9,7 @@ const HomePage = () => {
     <div>
       Welcome to Homepage
     </div>
-   );
+    );
 }
- 
+
 export default HomePage;
