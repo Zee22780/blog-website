@@ -11,7 +11,7 @@ import {
   setUserData,
 } from "../features/userSlice"
 
-import "../styling/navar.css"
+import "../styling/navbar.css"
 
 
 const Navbar = () => {
@@ -57,7 +57,7 @@ const Navbar = () => {
           />
           <h1 className="signedIn">{userData?.givenName}</h1>
           <GoogleLogout
-            clientId="1084334404054-jch76dh3eqbj787ostatku2t93h61muv.apps.googleusercontent.com"
+            clientId="426449746429-k2il2jgi84m4ossmka4h8lsqbo9tbm1v.apps.googleusercontent.com"
             render={(renderProps) => (
               <button
                 onClick={renderProps.onClick}
