@@ -15,7 +15,7 @@ const HomePage = () => {
   }
 
   return ( 
-    <div className="home_page" style={{ display: isSignedIn ? "none" : ""}}> 
+    <div className="home__page" style={{ display: isSignedIn ? "none" : ""}}> 
       {!isSignedIn ? (
         <div className="login_message">
           <h2>📚</h2>
