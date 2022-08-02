@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 import GoogleLogin from "react-google-login";
 import { useDispatch, useSelector } from "react-redux";
 import { selectSignedIn, setSignedIn, setUserData } from "../features/userSlice";
 import "../styling/home.css"
+import { gapi } from 'gapi-script'
+
+const clientId="426449746429-k2il2jgi84m4ossmka4h8lsqbo9tbm1v.apps.googleusercontent.com"
 
 const HomePage = () => {
   const isSignedIn = useSelector(selectSignedIn)
@@ -14,6 +17,16 @@ const HomePage = () => {
     dispatch(setUserData(response.profileObj))
   }
 
+  useEffect(() => {
+    function start() {
+      gapi.client.init({
+        clientId: clientId,
+        scope: "https://www.googleapis.com/auth/cloud-platform.read-only"
+      })
+    }
+    gapi.load("client:auth2", start)
+  })
+
   return ( 
     <div className="home__page" style={{ display: isSignedIn ? "none" : ""}}> 
       {!isSignedIn ? (
@@ -24,7 +37,7 @@ const HomePage = () => {
             We provide high quality online resources for reading. Just sign up and start reading.
           </p>
           <GoogleLogin
-          clientId="426449746429-k2il2jgi84m4ossmka4h8lsqbo9tbm1v.apps.googleusercontent.com"
+          clientId
           render={(renderProps) => (
             <button
               onClick={renderProps.onClick}
