@@ -12,13 +12,13 @@ const userSlice = createSlice({
     setSignedIn: (state, action) => {
       state.isSignedIn = action.payload
     },
-    setSignedIn: (state, action) => {
+    setUserData: (state, action) => {
       state.userData = action.payload
     },
-    setSignedIn: (state, action) => {
+    setInput: (state, action) => {
       state.searchInput = action.payload
     },
-    setSignedIn: (state, action) => {
+    setBlogData: (state, action) => {
       state.blogData = action.payload
     },
   },

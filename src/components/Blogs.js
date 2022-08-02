@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import { useDispatch, useSelector } from 'react-redux';
-import { selecUserInput, setBlogData } from '..features/userSlice'
+import { selectUserInput, setBlogData } from '../features/userSlice'
 import '../styling/blogs.css'
-import { selectUserInput } from '../features/userSlice';
 
 const Blogs = () => {
   const searchInput = useSelector(selectUserInput)
-  const blog_url =''
+  const blog_url =`https://gnews.io/api/v4/search?q=${searchInput}&token=419281a059811ed58e3e90eff13f3d07`
   const dispatch = useDispatch()
   const [blogs, setBlogs] = useState()
 
@@ -15,20 +14,20 @@ const Blogs = () => {
 
   useEffect(() => {
     axios
-    .get(blog_url)
-    .then((response) => {
-      dispatch(setBlogData(response.data))
-      setBlogs(response.data)
-      setLoading(false)
-    })
-    .catch((error)=>{
-      console.log(error)
-    })
+      .get(blog_url)
+      .then((response) => {
+        dispatch(setBlogData(response.data))
+        setBlogs(response.data)
+        setLoading(false)
+      })
+      .catch((error) => {
+        console.log(error)
+      })
   }, [searchInput])
 
   return (
-    <div className='blog_page'>
-      <h1 className='blog_page_header'>Blogs</h1>
+    <div className='blog__page'>
+      <h1 className='blog__page__header'>Blogs</h1>
       {loading ? <h1 className='loading'>Loading...</h1> : ""}
       <div className='blogs'>
         {blogs?.articles?.map((blog) => (
@@ -45,7 +44,7 @@ const Blogs = () => {
             </a>
         ))}
           {blogs?.totalArticles == 0 && (
-            <h1 className='no_blogs'>
+            <h1 className='no__blogs'>
               No blogs available. Search for something else to read blogs on this platform.
             </h1>
           )}

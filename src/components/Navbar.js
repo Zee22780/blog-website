@@ -33,7 +33,7 @@ const Navbar = () => {
 
   return (
     <div className='navbar'>
-      <h1 className="navbar__header">My Blog 💬 </h1>
+      <h1 className="navbar__header">My Blog 💬</h1>
       {isSignedIn && (
         <div className="blog__search">
           <input
